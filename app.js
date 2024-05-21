@@ -70,6 +70,15 @@ app.put("/listings/:id", async (req, res) => {
   await Listing.findByIdAndUpdate(id, { ...req.body.listing });
   res.redirect("/listings");
 });
+
+// <===================== Delete Route ==========================>
+app.delete("/listings/:id", async (req, res) => {
+  let { id } = req.params;
+  let listDeleted = await Listing.findByIdAndDelete(id);
+  console.log(listDeleted);
+  res.redirect("/listings");
+});
+
 app.listen(port, () => {
   console.log(`Server is running on ${port}`);
 });
