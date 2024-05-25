@@ -1,23 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title> listings</title>
-  </head>
-  <body>
-     <ul style="padding: 50PX;">
-      <li><%= listing.title %></li>
-      <li><%= listing.description %></li>
-      <li>&#8360; <%= listing.price.toLocaleString("en-PK") %></li>
-      <li><%= listing.location %></li>
-      <li><%= listing.country %></li>
-      <br><br>
-       <a href="/listings/<%=listing._id  %>/edit">Edit Lists</a>
+<% layout('/layouts/boilerplate') -%>
+<body>
+  <div class="py-5">
+    <div class="d-flex justify-content-center">
+      <div class="card col-6">
+        <a href="/listings/<%=listing._id  %>">
+          <img
+            src="<%= listing.image %>"
+            class="card-img-top"
+            alt="Listings"
+            height="250vh"
+          />
+        </a>
+        <div class="card-body">
+          <h6 class="card-text"><%= listing.title %></h6>
 
-    </ul>
-  <form method="POST" action="/listings/<%=listing._id%>?_method=DELETE">
-      <button>Delete this listing</button>
-    </form>
-        
-</html>
+          <h6><b>&#8360;<%= listing.price.toLocaleString("en-PK") %></b></h6>
+          <p><%=listing.description %></p>
+        </div>
+      </div>
+    </div>
+    <center>
+      <a class="btn btn-danger col-6" href="/listings/<%=listing._id  %>/edit"
+        >Edit Lists</a
+      >
+    </center>
+    <br />
+    <center>
+      <form method="POST" action="/listings/<%=listing._id%>?_method=DELETE">
+        <button class="btn btn-primary col-6">Delete this listing</button>
+      </form>
+    </center>
+  </div>
+</body>

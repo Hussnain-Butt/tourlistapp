@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const Listing = require("./models/listing.js");
 const methodOverride = require("method-override");
 const path = require("path");
+const engine = require("ejs-mate");
 const port = 8080;
 const app = express();
 
@@ -22,11 +23,16 @@ async function main() {
 }
 
 // <=====================Settings==========================>
-
+app.engine("ejs", engine);
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
+app.use(express.static(path.join(__dirname, "public")));
+
+app.get("/", (req, res) => {
+  res.send("root is working");
+});
 
 // <===================== Index Route ==========================>
 
@@ -68,7 +74,7 @@ app.get("/listings/:id/edit", async (req, res) => {
 app.put("/listings/:id", async (req, res) => {
   let { id } = req.params;
   await Listing.findByIdAndUpdate(id, { ...req.body.listing });
-  res.redirect("/listings");
+  res.redirect(`/listings/${id}`);
 });
 
 // <===================== Delete Route ==========================>

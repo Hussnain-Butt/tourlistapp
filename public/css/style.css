@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.heading {
+  padding-left: 50px;
+}
+
+.fa-solid {
+  font-size: xx-large;
+  color: rgb(0, 104, 69);
+}
+
+.navbar {
+  height: 13vh;
+  background-color: white;
+}
+
+.nav-link {
+  color: #a00303;
+}
+
+.card {
+  border: none !important;
+  margin-bottom: 2rem;
+}
+
+.card-img-top {
+  border: none !important;
+  border-radius: 20px !important;
+  object-fit: cover !important;
+  transition: 0.5s !important;
+}
+
+.card-img-top:hover {
+  opacity: 0.8;
+}
