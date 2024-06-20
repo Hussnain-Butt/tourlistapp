@@ -3,20 +3,26 @@
 <body>
   <h3>Create a New Listings</h3>
   <div class="py-5">
-    <form action="/listings" method="post">
+    <form action="/listings" method="post" novalidate class="needs-validation">
       <input
         class="form-control"
         type="text"
         placeholder="Title"
         name="listing[title]"
+        required
       />
+      <div class="invalid-feedback">Please enter a Title</div>
+
       <br />
       <textarea
         class="form-control"
         name="listing[description]"
         cols="30"
         rows="5"
+        required
       ></textarea>
+      <div class="invalid-feedback">Please enter a Description</div>
+
       <br />
 
       <input
@@ -32,21 +38,30 @@
         type="number"
         placeholder="Price"
         name="listing[price]"
+        required
       />
+      <div class="invalid-feedback">Please enter a Valid Number</div>
+
       <br />
       <input
         class="form-control"
         type="text"
         placeholder="Location"
         name="listing[location]"
+        required
       />
+      <div class="invalid-feedback">Please enter Your Location</div>
+
       <br />
       <input
         class="form-control"
         type="text"
         placeholder="Country"
         name="listing[country]"
+        required
       />
+      <div class="invalid-feedback">Please enter a Valid Country</div>
+
       <br />
       <button class="btn btn-danger col-12" type="submit">Add</button>
     </form>

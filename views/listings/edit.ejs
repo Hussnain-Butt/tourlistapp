@@ -4,22 +4,33 @@
   <div class="py-5">
     <h3>Update Listings</h3>
     <br />
-    <form method="POST" action="/listings/<%= listing._id %>?_method=PUT">
+    <form
+      method="POST"
+      action="/listings/<%= listing._id %>?_method=PUT"
+      novalidate
+      class="needs-validation"
+    >
       <input
         class="form-control"
         type="text"
         value="<%=listing.title  %>"
         name="listing[title]"
+        required
       />
+      <div class="invalid-feedback">Please enter a Title</div>
+
       <br />
       <textarea
         class="form-control"
         name="listing[description]"
         cols="30"
         rows="5"
+        required
       >
 <%=listing.description  %></textarea
       >
+      <div class="invalid-feedback">Please enter a Description</div>
+
       <br />
 
       <input
@@ -27,6 +38,7 @@
         type="text"
         value="<%=listing.image  %>"
         name="listing[image]"
+        required
       />
       <br />
 
@@ -35,21 +47,30 @@
         type="number"
         value="<%=listing.price  %>"
         name="listing[price]"
+        required
       />
+      <div class="invalid-feedback">Please enter a Price</div>
+
       <br />
       <input
         class="form-control"
         type="text"
         value="<%=listing.location  %>"
         name="listing[location]"
+        required
       />
+      <div class="invalid-feedback">Please enter Your Location</div>
+
       <br />
       <input
         class="form-control"
         type="text"
         value="<%=listing.country  %>"
         name="listing[country]"
+        required
       />
+      <div class="invalid-feedback">Please enter Your Country</div>
+
       <br />
       <button class="col-12 btn btn-danger" type="submit">Update</button>
     </form>
